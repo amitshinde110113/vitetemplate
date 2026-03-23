@@ -3,23 +3,7 @@ import { ChevronDown, ChevronUp, AlertCircle, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Select.css';
 
-export interface SelectOption {
-  label: string;
-  value: string;
-}
-
-export interface SelectProps {
-  label: string;
-  options: SelectOption[];
-  value?: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  required?: boolean;
-  error?: string;
-  tooltipText?: string;
-}
-
-export const Select: React.FC<SelectProps> = ({
+export const Select = ({
   label,
   options,
   value,
@@ -30,12 +14,12 @@ export const Select: React.FC<SelectProps> = ({
   tooltipText
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };

@@ -4,27 +4,18 @@ import {
   getCoreRowModel,
   getExpandedRowModel,
   getPaginationRowModel,
-  flexRender,
-  type ColumnDef,
-  type Row
+  flexRender
 } from '@tanstack/react-table';
 import { ChevronRight, ChevronLeft, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import './Table.css';
 import { Button } from '../Button/Button';
 
-export interface TableProps<TData> {
-  data: TData[];
-  columns: ColumnDef<TData, any>[];
-  renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
-  getRowCanExpand?: (row: Row<TData>) => boolean;
-}
-
-export function Table<TData>({
+export function Table({
   data,
   columns,
   renderSubComponent,
   getRowCanExpand = () => !!renderSubComponent,
-}: TableProps<TData>) {
+}) {
   const [expanded, setExpanded] = useState({});
 
   const table = useReactTable({
@@ -32,7 +23,7 @@ export function Table<TData>({
     columns,
     state: { expanded },
     onExpandedChange: setExpanded,
-    getSubRows: row => (row as any).subRows,
+    getSubRows: row => row.subRows,
     getRowCanExpand,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),

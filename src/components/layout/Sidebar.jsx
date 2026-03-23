@@ -3,7 +3,7 @@ import './Sidebar.css';
 import { Home, PlusCircle, LayoutDashboard, BarChart2, FileText, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
-export const Sidebar: React.FC = () => {
+export const Sidebar = () => {
   const menuItems = [
     { icon: <Home size={22} />, path: '/', label: 'Home' },
     { icon: <PlusCircle size={22} />, path: '/create', label: 'Create' },

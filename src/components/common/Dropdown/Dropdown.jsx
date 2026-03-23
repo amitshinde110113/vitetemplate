@@ -3,24 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MoreVertical } from 'lucide-react';
 import './Dropdown.css';
 
-export interface DropdownItem {
-  label: string;
-  onClick: () => void;
-  danger?: boolean;
-}
-
-export interface DropdownProps {
-  items: DropdownItem[];
-  icon?: React.ReactNode;
-}
-
-export const Dropdown: React.FC<DropdownProps> = ({ items, icon }) => {
+export const Dropdown = ({ items, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };

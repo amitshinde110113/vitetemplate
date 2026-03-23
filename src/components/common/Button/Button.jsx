@@ -1,13 +1,7 @@
-import React, { type ButtonHTMLAttributes } from 'react';
+import React from 'react';
 import './Button.css';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'solid' | 'outline' | 'ghost';
-  colorTheme?: 'primary' | 'danger' | 'neutral';
-  size?: 'sm' | 'md' | 'lg';
-}
-
-export const Button: React.FC<ButtonProps> = ({ 
+export const Button = ({ 
   children, 
   variant = 'solid', 
   colorTheme = 'primary',

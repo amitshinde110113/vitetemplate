@@ -1,12 +1,7 @@
 import React from 'react';
 import './Badge.css';
 
-export interface BadgeProps {
-  status: 'success' | 'danger' | 'warning' | 'yellow' | 'neutral';
-  children: React.ReactNode;
-}
-
-export const Badge: React.FC<BadgeProps> = ({ status, children }) => {
+export const Badge = ({ status, children }) => {
   const getTailwindColors = () => {
     switch (status) {
       case 'success': return 'bg-[#198754]/10 text-[#198754]';

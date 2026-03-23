@@ -32,7 +32,7 @@ const AppRoutes = () => {
     navigate('/login');
   };
 
-  const restoreOriginalUri = async (_oktaAuth: OktaAuth, originalUri: string) => {
+  const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     navigate(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
@@ -61,7 +61,7 @@ const AppRoutes = () => {
   );
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <AppRoutes />

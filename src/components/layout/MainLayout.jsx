@@ -3,11 +3,7 @@ import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import './MainLayout.css';
 
-interface MainLayoutProps {
-  children: React.ReactNode;
-}
-
-export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout = ({ children }) => {
   return (
     <div className="main-layout">
       <Header />

@@ -3,18 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../Button/Button';
 import './Modal.css';
 
-export interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-  onConfirm?: () => void;
-  confirmText?: string;
-  cancelText?: string;
-  confirmColorTheme?: 'primary' | 'danger' | 'neutral';
-}
-
-export const Modal: React.FC<ModalProps> = ({
+export const Modal = ({
   isOpen,
   onClose,
   title,

@@ -5,18 +5,8 @@ import { Badge } from '../../components/common/Badge/Badge';
 import { Dropdown } from '../../components/common/Dropdown/Dropdown';
 import { Button } from '../../components/common/Button/Button';
 import { Modal } from '../../components/common/Modal/Modal';
-import type { ColumnDef } from '@tanstack/react-table';
 
-interface IngestionData {
-  id: string;
-  source: string;
-  status: 'success' | 'danger' | 'warning' | 'yellow' | 'neutral';
-  records: number;
-  lastRun: string;
-  duration: string;
-}
-
-const mockData: IngestionData[] = [
+const mockData = [
   { id: '1', source: 'CRD Database', status: 'success', records: 15420, lastRun: '2023-10-24 10:30', duration: '45s' },
   { id: '2', source: 'Bloomberg API', status: 'warning', records: 805, lastRun: '2023-10-24 10:25', duration: '1m 20s' },
   { id: '3', source: 'FTP Server 1', status: 'danger', records: 0, lastRun: '2023-10-24 10:00', duration: '5s' },
@@ -24,23 +14,23 @@ const mockData: IngestionData[] = [
   { id: '5', source: 'Snowflake Sync', status: 'neutral', records: 0, lastRun: 'Pending', duration: '-' },
 ];
 
-export const IngestionDashboard: React.FC = () => {
+export const IngestionDashboard = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<IngestionData | null>(null);
+  const [selectedRow, setSelectedRow] = useState(null);
 
-  const handleRetrigger = (row: IngestionData) => {
+  const handleRetrigger = (row) => {
     setSelectedRow(row);
     setIsModalOpen(true);
   };
 
-  const columns: ColumnDef<IngestionData>[] = [
+  const columns = [
     { accessorKey: 'source', header: 'Source System' },
     {
       accessorKey: 'status',
       header: 'Status',
       cell: ({ getValue }) => {
-        const status = getValue() as IngestionData['status'];
+        const status = getValue();
         return <Badge status={status}>{status}</Badge>;
       }
     },
@@ -97,7 +87,7 @@ export const IngestionDashboard: React.FC = () => {
         </div>
       </div>
 
-      <Table<IngestionData> 
+      <Table 
         data={mockData} 
         columns={columns} 
       />

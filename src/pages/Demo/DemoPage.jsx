@@ -5,30 +5,21 @@ import { Dropdown } from '../../components/common/Dropdown/Dropdown';
 import { Modal } from '../../components/common/Modal/Modal';
 import { Select } from '../../components/common/Select/Select';
 import { Table } from '../../components/common/Table/Table';
-import type { ColumnDef } from '@tanstack/react-table';
 
-interface DemoData {
-  id: string;
-  name: string;
-  status: 'success' | 'danger' | 'warning' | 'yellow' | 'neutral';
-  role: string;
-  details: string;
-}
-
-const mockData: DemoData[] = [
+const mockData = [
   { id: '1', name: 'Alice Smith', status: 'success', role: 'Admin', details: 'Department: Clinical\nStorage: US-East-1' },
   { id: '2', name: 'Bob Jones', status: 'warning', role: 'Editor', details: 'Department: Finance\nStorage: EU-West-1' },
   { id: '3', name: 'Charlie Brown', status: 'danger', role: 'Viewer', details: 'Department: Operations\nStorage: AP-South' },
   { id: '4', name: 'Diana Prince', status: 'yellow', role: 'Guest', details: 'Department: Audit\nStorage: Global' },
 ];
 
-export const DemoPage: React.FC = () => {
+export const DemoPage = () => {
   const [isPrimaryModalOpen, setIsPrimaryModalOpen] = useState(false);
   const [isDangerModalOpen, setIsDangerModalOpen] = useState(false);
-  const [demoSelect1, setDemoSelect1] = useState<string>('');
-  const [demoSelect2, setDemoSelect2] = useState<string>('RTS');
+  const [demoSelect1, setDemoSelect1] = useState('');
+  const [demoSelect2, setDemoSelect2] = useState('RTS');
 
-  const columns: ColumnDef<DemoData>[] = [
+  const columns = [
     {
       id: 'expander',
       header: () => null,
@@ -49,7 +40,7 @@ export const DemoPage: React.FC = () => {
       accessorKey: 'status',
       header: 'Status',
       cell: ({ getValue }) => {
-        const status = getValue() as any;
+        const status = getValue();
         return <Badge status={status}>{status}</Badge>;
       }
     },
@@ -67,7 +58,7 @@ export const DemoPage: React.FC = () => {
     }
   ];
 
-  const renderExpandedDetails = ({ row }: { row: any }) => {
+  const renderExpandedDetails = ({ row }) => {
     return (
       <div className="p-4 bg-white border-b border-neutral-light">
         <h4 className="mb-2 font-bold text-neutral-dark">Tooltip Content</h4>
@@ -152,7 +143,7 @@ export const DemoPage: React.FC = () => {
 
       <section style={{ marginBottom: 'var(--spacing-xl)' }}>
         <h2 style={{ marginBottom: 'var(--spacing-sm)' }}>Data Table (with Expandable Rows)</h2>
-        <Table<DemoData> 
+        <Table 
           data={mockData} 
           columns={columns} 
           renderSubComponent={renderExpandedDetails} 
