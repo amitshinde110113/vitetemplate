@@ -1,0 +1,106 @@
+.custom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent; /* Prevents shifting between outline/solid */
+}
+
+.custom-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.custom-btn--sm {
+  padding: 4px 12px;
+  font-size: 0.875rem;
+}
+
+.custom-btn--md {
+  padding: 6px 16px;
+  font-size: 1rem;
+}
+
+.custom-btn--lg {
+  padding: 12px var(--spacing-lg);
+  font-size: 1.125rem;
+}
+
+/* === Solid Variants === */
+.custom-btn--solid {
+  box-shadow: var(--box-shadow-sm);
+}
+.custom-btn--solid:hover:not(:disabled) {
+  box-shadow: var(--box-shadow-md);
+}
+.custom-btn--solid:active:not(:disabled) {
+  box-shadow: var(--box-shadow-sm);
+}
+
+.custom-btn--solid.custom-btn--primary {
+  background-color: var(--color-primary-bold);
+  color: var(--color-white);
+}
+.custom-btn--solid.custom-btn--primary:hover:not(:disabled) {
+  background-color: #044b8c;
+}
+
+.custom-btn--solid.custom-btn--danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+.custom-btn--solid.custom-btn--danger:hover:not(:disabled) {
+  background-color: #a11f38;
+}
+
+.custom-btn--solid.custom-btn--neutral {
+  background-color: var(--color-neutral-dark);
+  color: var(--color-white);
+}
+.custom-btn--solid.custom-btn--neutral:hover:not(:disabled) {
+  background-color: var(--color-black);
+}
+
+/* === Outline Variants === */
+.custom-btn--outline.custom-btn--primary {
+  background-color: transparent;
+  color: var(--color-primary-bold);
+  border-color: var(--color-primary-bold);
+}
+.custom-btn--outline.custom-btn--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-muted);
+}
+
+.custom-btn--outline.custom-btn--danger {
+  background-color: transparent;
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+.custom-btn--outline.custom-btn--danger:hover:not(:disabled) {
+  background-color: #f8d7da;
+}
+
+.custom-btn--outline.custom-btn--neutral {
+  background-color: transparent;
+  color: var(--color-neutral-dark);
+  border-color: var(--color-neutral-dark);
+}
+.custom-btn--outline.custom-btn--neutral:hover:not(:disabled) {
+  background-color: var(--color-neutral-light);
+}
+
+/* === Ghost Variants === */
+.custom-btn--ghost {
+  background-color: transparent;
+  color: inherit;
+  border-color: transparent;
+  padding-left: var(--spacing-xs);
+  padding-right: var(--spacing-xs);
+}
+.custom-btn--ghost:hover:not(:disabled) {
+  background-color: var(--color-neutral-light);
+}

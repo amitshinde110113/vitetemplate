@@ -1,0 +1,30 @@
+.custom-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px calc(var(--spacing-sm) * 1.5);
+  border-radius: 100px; /* fully rounded */
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.custom-badge--success {
+  background-color: #d1e7dd; /* Lightened success for background */
+  color: var(--color-success);
+}
+
+.custom-badge--failed {
+  background-color: #f8d7da; /* Lightened danger */
+  color: var(--color-danger);
+}
+
+.custom-badge--warning {
+  background-color: #fff3cd; /* Lightened warning */
+  color: var(--color-warning);
+}
+
+.custom-badge--neutral {
+  background-color: var(--color-neutral-light);
+  color: var(--color-neutral-dark);
+}
